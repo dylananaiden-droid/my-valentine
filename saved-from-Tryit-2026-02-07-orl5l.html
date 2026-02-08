@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 440px;
+    }
+
+    h1 {
+      color: #e63946;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background: #e63946;
+      color: white;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .heart, .confetti {
+      position: absolute;
+      font-size: 22px;
+      animation: fall 4s linear forwards;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/02/14/audio_8e6c8fd2f6.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="question">
+  <h1>Will you be my Valentine? ❤️</h1>
+  <button id="yesBtn">Yes 💖</button>
+  <button id="noBtn">No 😢</button>
+</div>
+
+<div class="card hidden" id="answer">
+  <h1>My Love, Rohi ❤️</h1> <!-- CHANGE NAME HERE -->
+  <p>
+    I’m so lucky to have you in my life.  
+    You’re my happy side, my peace, and my safe place.  
+    Loving you feels effortless and real.  
+    In every lifetime, in every version of me,  
+    I will always choose you.  
+    Thank you for being the love of my life Loving you isn’t something I try to do — it’s something that happens
+      naturally, every single day. You are my safest place, my best friend,
+      and the person I want beside me through everything life brings.
+      I love the way we grow together, the way we choose each other even on
+      hard days, and the quiet moments that mean more than words ever could With you, love feels steady, real, and full of purpose
+      Thank you for being my partner, my heart, and my home.
+      Today and always, i love you baby ❤️
+  </p>
+</div>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const question = document.getElementById("question");
+  const answer = document.getElementById("answer");
+  const music = document.getElementById("music");
+
+  yesBtn.onclick = () => {
+    question.classList.add("hidden");
+    answer.classList.remove("hidden");
+    music.play();
+    setInterval(celebrate, 250);
+  };
+
+  noBtn.onmouseover = () => {
+    noBtn.style.left = Math.random() * 80 + "vw";
+    noBtn.style.top = Math.random() * 80 + "vh";
+  };
+
+  function celebrate() {
+    const item = document.createElement("div");
+    item.className = Math.random() > 0.5 ? "heart" : "confetti";
+    item.innerHTML = Math.random() > 0.5 ? "❤️" : "🎊";
+    item.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 4000);
+  }
+</script>
+
+</body>
+</html>
